@@ -1,3 +1,7 @@
 
 .idea/.idea.SharedGroceryList-Back-End.dir/.idea/indexLayout.xml
 .idea/.idea.SharedGroceryList-Back-End.dir/.idea/workspace.xml
+/obj
+/bin
+.idea/.idea.SharedGroceryList-Back-End.dir/.idea/vcs.xml
+appsettings.Development.json
