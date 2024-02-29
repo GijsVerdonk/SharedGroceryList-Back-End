@@ -5,3 +5,4 @@
 /bin
 .idea/.idea.SharedGroceryList-Back-End.dir/.idea/vcs.xml
 appsettings.Development.json
+/.idea
