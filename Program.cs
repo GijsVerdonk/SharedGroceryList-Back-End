@@ -15,7 +15,7 @@ builder.Services.AddCors(options =>
             builder
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:3000", "https://appname.azurestaticapps.net");
+                .WithOrigins("http://localhost:3000", "http://localhost:5173", "https://appname.azurestaticapps.net");
         });
 });
 
