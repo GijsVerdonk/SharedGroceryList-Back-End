@@ -1,11 +1,21 @@
-using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using SharedGroceryListAPI.Models;
 
 var builder = WebApplication.CreateBuilder(args);
+var Configuration = builder.Configuration;
+
+builder.Services.AddAuthentication(options =>
+    {
+        options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+        options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    }).AddJwtBearer(options =>
+    {
+        options.Authority = "https://dev-1qptdla0pgqbqxfn.us.auth0.com/";
+        options.Audience = "https://sharedgrocerylist.mycompany.com";
+    });
+
+    builder.Services.AddMvc();
 
 builder.Services.AddCors(options =>
 {
@@ -42,7 +52,15 @@ app.UseHttpsRedirection();
 
 app.UseCors("CORSPolicy");
 
+app.UseAuthentication();
+app.UseRouting(); 
 app.UseAuthorization();
+
+
+app.UseEndpoints(endpoints =>
+{
+    endpoints.MapControllers();
+});
 
 app.MapControllers();
 
