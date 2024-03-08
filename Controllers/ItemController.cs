@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SharedGroceryListAPI.Models;
-//TEST
+//TEST2
 namespace SharedGroceryListAPI.Controllers
 {
     [Route("api/[controller]")]
