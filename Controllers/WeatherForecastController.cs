@@ -8,7 +8,6 @@ using Microsoft.Extensions.Logging;
 namespace SharedGroceryListAPI.Controllers;
 
 [ApiController]
-[Authorize]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
