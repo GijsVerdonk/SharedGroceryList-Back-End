@@ -16,9 +16,6 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 
 COPY . /source
 
-# OVERRIDE PORT TEST
-ENV ASPNETCORE_URLS=http://+:7070
-
 WORKDIR /source
 
 # This is the architecture you’re building for, which is passed in by the builder.
