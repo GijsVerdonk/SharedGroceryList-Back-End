@@ -42,7 +42,7 @@ jobs:
       with:
         context: .
         push: true
-        tags: gijsver/sharedgrocerylist-back-end:latest
+        tags: gijsver/sharedgrocerylist-back-end
         platforms: linux/amd64
     
     
