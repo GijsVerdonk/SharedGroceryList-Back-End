@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using SharedGroceryListAPI.Models;
-
+//TEST
 var builder = WebApplication.CreateBuilder(args);
 var Configuration = builder.Configuration;
 
