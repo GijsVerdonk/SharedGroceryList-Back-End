@@ -1,6 +1,10 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SharedGroceryListAPI.Models;
+using SharedGroceryListAPI.Swagger;
+using Swashbuckle.AspNetCore.SwaggerGen;
+
 //TEST
 var builder = WebApplication.CreateBuilder(args);
 var Configuration = builder.Configuration;
@@ -12,7 +16,7 @@ builder.Services.AddAuthentication(options =>
     }).AddJwtBearer(options =>
     {
         options.Authority = "https://dev-1qptdla0pgqbqxfn.us.auth0.com/";
-        options.Audience = "https://sharedgrocerylist.mycompany.com";
+        options.Audience = "https://dev-1qptdla0pgqbqxfn.us.auth0.com/userinfo";
     });
 
     builder.Services.AddMvc();
@@ -38,6 +42,7 @@ builder.Services.AddDbContext<ItemDBContext>(options => options.UseMySql(configu
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
 
 var app = builder.Build();
 
