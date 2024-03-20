@@ -36,7 +36,7 @@ builder.Services.AddCors(options =>
 
 var configuration = builder.Configuration;
 
-//SQL connection
+//SQL connection test 2
 using (MySqlConnection connection = new MySqlConnection(builder.Configuration.GetConnectionString("Database")))
 {
     try
