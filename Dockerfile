@@ -49,7 +49,7 @@ WORKDIR /app
 COPY --from=build /app .
 
 COPY ["appsettings.json", "./app/"]
-
+RUN sed -i "s|REPLACE_CONNECTION_STRING|${DB_CONNECTION_STRING}|g" appsettings.json
 
 # Create a non-privileged user that the app will run under.
 # See https://docs.docker.com/go/dockerfile-user-best-practices/
