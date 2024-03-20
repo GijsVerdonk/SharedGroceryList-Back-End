@@ -23,6 +23,7 @@ jobs:
       - name: Substitute variables in appsettings.json
         run: |
           sed -i "s|REPLACE_CONNECTION_STRING|${{ secrets.DB_CONNECTION_STRING }}|g" ${{ github.workspace }}/appsettings.json
+          cat /home/runner/work/SharedGroceryList-Back-End/SharedGroceryList-Back-End/appsettings.json
       - name: Restore dependencies
         run: dotnet restore
       - name: Build
