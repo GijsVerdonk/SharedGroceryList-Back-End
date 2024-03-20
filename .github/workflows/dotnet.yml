@@ -15,16 +15,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: App Settings Variable Substitution
-      uses: microsoft/variable-substitution@v1
-      with:
-        files: 'appsettings.json'
-        ConnectionStrings.Default: ${{ secrets.DB_CONNECTION_STRING }}
     - uses: actions/checkout@v3
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
         dotnet-version: 6.0.x
+    - name: Substitute variables in appsettings.json
+      run: |
+          sed -i "s|REPLACE_CONNECTION_STRING|${{ secrets.DB_CONNECTION_STRING }}|g" ${{ github.workspace }}/appsettings.json
+
+    - name: Run variable substitution action
+      uses: microsoft/variable-substitution@v1
+      with:
+          files: 'appsettings.json'
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
