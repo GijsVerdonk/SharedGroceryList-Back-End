@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using MySqlConnector;
 using SharedGroceryListAPI.Models;
 using SharedGroceryListAPI.Swagger;
 using Swashbuckle.AspNetCore.SwaggerGen;
@@ -35,6 +36,23 @@ builder.Services.AddCors(options =>
 
 var configuration = builder.Configuration;
 
+//SQL connection
+using (MySqlConnection connection = new MySqlConnection(builder.Configuration.GetConnectionString("Database")))
+{
+    try
+    {
+        connection.Open();
+        Console.WriteLine("Database connected!");
+    }
+    catch 
+    {
+               
+        Console.WriteLine("[!] Database connection error.");
+    }
+
+    connection.Close();
+}
+
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -60,7 +78,6 @@ app.UseCors("CORSPolicy");
 app.UseAuthentication();
 app.UseRouting(); 
 app.UseAuthorization();
-
 
 app.UseEndpoints(endpoints =>
 {
