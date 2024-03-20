@@ -48,7 +48,7 @@ WORKDIR /app
 # Copy everything needed to run the app from the "build" stage.
 COPY --from=build /app .
 
-COPY --from=build /app/appsettings.json /app/appsettings.json
+COPY bin/Debug/netcoreapp1.0/publish/appsettings.json /appsettings.json
 
 
 # Create a non-privileged user that the app will run under.
