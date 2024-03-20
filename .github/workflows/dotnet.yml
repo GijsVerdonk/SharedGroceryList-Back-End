@@ -21,7 +21,7 @@ jobs:
           sed -i "s|REPLACE_CONNECTION_STRING|${{ secrets.DB_CONNECTION_STRING }}|g" ${{ github.workspace }}/appsettings.json
           cat /home/runner/work/SharedGroceryList-Back-End/SharedGroceryList-Back-End/appsettings.json
       - name: Copy modified appsettings.json into Docker build context
-        run: cp ${{ github.workspace }}/appsettings.json .
+        run: cp ${{ github.workspace }}/appsettings.json ./modified_appsettings.json
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
