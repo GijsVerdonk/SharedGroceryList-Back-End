@@ -39,6 +39,7 @@ var configuration = builder.Configuration;
 //SQL connection test 2
 using (MySqlConnection connection = new MySqlConnection(builder.Configuration.GetConnectionString("Database")))
 {
+    Console.WriteLine("Test: " + builder.Configuration.GetConnectionString("Database").Length);
     try
     {
         connection.Open();
