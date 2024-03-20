@@ -9,5 +9,5 @@ public class Item
     public int id { get; set; }
     [Column(TypeName = "nvarchar(100)")]
     public string name { get; set; }
-    public int amount { get; set; }
+    // public int quantity { get; set; }
 }
